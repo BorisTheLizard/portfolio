@@ -1,0 +1,44 @@
+#background-video {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.intro {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.intro--banner h1 {
+  font-size: 3rem;
+}
+
+.work--lockup .slider--item-hidden {
+  display: none;
+}
+@media (max-width: 767px) {
+  .intro {
+    flex-direction: column;
+  }
+}
+.work--lockup .slider--item-image canvas {
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 767px) {
+  .work--lockup .slider--item-image canvas {
+    height: 100%;
+    width: auto;
+  }
+}
+canvas {
+  outline: none;
+}
