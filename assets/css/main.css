@@ -779,10 +779,7 @@ body {
   margin: 0 auto;
   overflow: hidden;
 }
-.work--lockup .slider--item-image canvas {
-  width: 100%;
-  height: auto;
-}
+
 .work--lockup .slider--item-left {
   top: 50%;
   left: 0;
@@ -799,7 +796,6 @@ body {
 }
 .work--lockup .slider--item-active {
   position: relative;
-  top: 30px;
   left: 50%;
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -822,7 +818,6 @@ body {
 .work--lockup .slider--next,
 .work--lockup .slider--prev {
   position: absolute;
-  top: 160px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;

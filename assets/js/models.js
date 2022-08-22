@@ -12,14 +12,15 @@ init();
 animate();
 
 function init() {
+  console.log(document.getElementsByClassName("slider--item slider--item-active")[0].offsetWidth,document.getElementsByClassName("slider--item slider--item-active")[0].offsetHeight)
   const container = document.getElementsByClassName("slider--item-image")[1];
   camera = new THREE.PerspectiveCamera(
     45,
-    window.innerWidth / window.innerHeight,
+   document.getElementsByClassName("slider--item slider--item-active")[0].offsetWidth / document.getElementsByClassName("slider--item slider--item-active")[0].offsetHeight,
     1,
     4000
   );
-  camera.position.set(250, 250, 250);
+  camera.position.set(350, 350, 350);
 
   scene = new THREE.Scene();
   //scene.background = new THREE.Color( 0xa0a0a0 );
@@ -81,11 +82,12 @@ function init() {
   renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
   renderer.setClearColor(0x000000, 0);
   renderer.setPixelRatio(window.devicePixelRatio);
-  //renderer.setSize(document.getElementsByClassName("slider--item slider--item-active")[0].offsetWidth, document.getElementsByClassName("slider--item slider--item-active")[0].offsetHeight);
-  renderer.setSize(window.innerWidth, window.innerHeight);
+  console.log("the width is ", document.getElementsByClassName("slider--item slider--item-active")[0].offsetWidth)
+  renderer.setSize(document.getElementsByClassName("slider--item slider--item-active")[0].offsetWidth, document.getElementsByClassName("slider--item slider--item-active")[0].offsetHeight);
+  //renderer.setSize(window.innerWidth, window.innerHeight);
   //renderer.shadowMap.enabled = true;
   container.appendChild(renderer.domElement);
-
+console.log("the width is ", document.getElementsByClassName("slider--item slider--item-active")[0].offsetWidth)
   const controls = new OrbitControls(camera, renderer.domElement);
   controls.target.set(0, 100, 0);
   controls.update();
@@ -94,11 +96,9 @@ function init() {
 }
 
 function onWindowResize() {
-  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.aspect = document.getElementsByClassName("slider--item slider--item-active")[0].offsetWidth / document.getElementsByClassName("slider--item slider--item-active")[0].offsetHeight;
   camera.updateProjectionMatrix();
-  //renderer.setSize(document.getElementsByClassName("slider--item slider--item-active")[0].offsetWidth, document.getElementsByClassName("slider--item slider--item-active")[0].offsetHeight);
-
-  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setSize(document.getElementsByClassName("slider--item slider--item-active")[0].offsetWidth, document.getElementsByClassName("slider--item slider--item-active")[0].offsetHeight);
 }
 
 //
