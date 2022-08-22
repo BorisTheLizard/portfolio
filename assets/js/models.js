@@ -15,7 +15,7 @@ function init() {
   console.log(document.getElementsByClassName("slider--item slider--item-active")[0].offsetWidth,document.getElementsByClassName("slider--item slider--item-active")[0].offsetHeight)
   const container = document.getElementsByClassName("slider--item-image")[1];
   camera = new THREE.PerspectiveCamera(
-    45,
+    40,
    document.getElementsByClassName("slider--item slider--item-active")[0].offsetWidth / document.getElementsByClassName("slider--item slider--item-active")[0].offsetHeight,
     1,
     4000
