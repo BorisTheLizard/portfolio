@@ -85,4 +85,7 @@ canvas {
   .work--lockup .slider {
     width: 100%;
   }
+  .intro--banner h1 {
+    font-size: 2rem;
+  }
 }
