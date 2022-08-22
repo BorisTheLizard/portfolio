@@ -12,11 +12,19 @@ init();
 animate();
 
 function init() {
-  console.log(document.getElementsByClassName("slider--item slider--item-active")[0].offsetWidth,document.getElementsByClassName("slider--item slider--item-active")[0].offsetHeight)
+  console.log(
+    document.getElementsByClassName("slider--item slider--item-active")[0]
+      .offsetWidth,
+    document.getElementsByClassName("slider--item slider--item-active")[0]
+      .offsetHeight
+  );
   const container = document.getElementsByClassName("slider--item-image")[1];
   camera = new THREE.PerspectiveCamera(
     40,
-   document.getElementsByClassName("slider--item slider--item-active")[0].offsetWidth / document.getElementsByClassName("slider--item slider--item-active")[0].offsetHeight,
+    document.getElementsByClassName("slider--item slider--item-active")[0]
+      .offsetWidth /
+      document.getElementsByClassName("slider--item slider--item-active")[0]
+        .offsetHeight,
     1,
     4000
   );
@@ -62,11 +70,11 @@ function init() {
 
   // model
   const loader = new FBXLoader();
-  loader.load("assets/models/ShotgunModel6.fbx", function (object) {
-    //mixer = new THREE.AnimationMixer(object);
+  loader.load("assets/models/TucanNoBoomBox.fbx", function (object) {
+    mixer = new THREE.AnimationMixer(object);
 
-    //const action = mixer.clipAction(object.animations[0]);
-    //action.play();
+    const action = mixer.clipAction(object.animations[0]);
+    action.play();
 
     object.traverse(function (child) {
       if (child.isMesh) {
@@ -81,8 +89,12 @@ function init() {
   renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
   renderer.setClearColor(0x000000, 0);
   renderer.setPixelRatio(window.devicePixelRatio);
-  const width = document.getElementsByClassName("slider--item slider--item-active")[0].offsetWidth;
-  const height = document.getElementsByClassName("slider--item slider--item-active")[0].offsetHeight;
+  const width = document.getElementsByClassName(
+    "slider--item slider--item-active"
+  )[0].offsetWidth;
+  const height = document.getElementsByClassName(
+    "slider--item slider--item-active"
+  )[0].offsetHeight;
   renderer.setSize(width, height);
   container.appendChild(renderer.domElement);
   const controls = new OrbitControls(camera, renderer.domElement);
@@ -93,8 +105,12 @@ function init() {
 }
 
 function onWindowResize() {
-  const width = document.getElementsByClassName("slider--item slider--item-active")[0].offsetWidth;
-  const height = document.getElementsByClassName("slider--item slider--item-active")[0].offsetHeight;
+  const width = document.getElementsByClassName(
+    "slider--item slider--item-active"
+  )[0].offsetWidth;
+  const height = document.getElementsByClassName(
+    "slider--item slider--item-active"
+  )[0].offsetHeight;
   camera.aspect = width / height;
   camera.updateProjectionMatrix();
   renderer.setSize(width, height);
