@@ -78,16 +78,13 @@ function init() {
     scene.add(object);
   });
 
-  //renderer.roughnessMap = 0;
   renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
   renderer.setClearColor(0x000000, 0);
   renderer.setPixelRatio(window.devicePixelRatio);
-  console.log("the width is ", document.getElementsByClassName("slider--item slider--item-active")[0].offsetWidth)
-  renderer.setSize(document.getElementsByClassName("slider--item slider--item-active")[0].offsetWidth, document.getElementsByClassName("slider--item slider--item-active")[0].offsetHeight);
-  //renderer.setSize(window.innerWidth, window.innerHeight);
-  //renderer.shadowMap.enabled = true;
+  const width = document.getElementsByClassName("slider--item slider--item-active")[0].offsetWidth;
+  const height = document.getElementsByClassName("slider--item slider--item-active")[0].offsetHeight;
+  renderer.setSize(width, height);
   container.appendChild(renderer.domElement);
-console.log("the width is ", document.getElementsByClassName("slider--item slider--item-active")[0].offsetWidth)
   const controls = new OrbitControls(camera, renderer.domElement);
   controls.target.set(0, 100, 0);
   controls.update();
@@ -96,9 +93,11 @@ console.log("the width is ", document.getElementsByClassName("slider--item slide
 }
 
 function onWindowResize() {
-  camera.aspect = document.getElementsByClassName("slider--item slider--item-active")[0].offsetWidth / document.getElementsByClassName("slider--item slider--item-active")[0].offsetHeight;
+  const width = document.getElementsByClassName("slider--item slider--item-active")[0].offsetWidth;
+  const height = document.getElementsByClassName("slider--item slider--item-active")[0].offsetHeight;
+  camera.aspect = width / height;
   camera.updateProjectionMatrix();
-  renderer.setSize(document.getElementsByClassName("slider--item slider--item-active")[0].offsetWidth, document.getElementsByClassName("slider--item slider--item-active")[0].offsetHeight);
+  renderer.setSize(width, height);
 }
 
 //
