@@ -73,7 +73,6 @@ canvas {
 @media (max-width: 767px) {
   .intro {
     flex-direction: column;
-    margin-top: 3rem;
   }
   .work {
     height: 50%;
@@ -87,5 +86,6 @@ canvas {
   }
   .intro--banner h1 {
     font-size: 2rem;
+    margin-bottom: 0;
   }
 }
