@@ -70,7 +70,8 @@ function init() {
 
   // model
   const loader = new FBXLoader();
-  loader.load("assets/models/TucanNoBoomBox.fbx", function (object) {
+  //Use second tukan model to see a diference "TukanNoBoomBox"
+  loader.load("assets/models/TukanWithBoomBox.fbx", function (object) {
     mixer = new THREE.AnimationMixer(object);
 
     const action = mixer.clipAction(object.animations[0]);
