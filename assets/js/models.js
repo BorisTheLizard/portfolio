@@ -71,7 +71,7 @@ function init() {
   // model
   const loader = new FBXLoader();
   //Use second tukan model to see a diference "TukanNoBoomBox"
-  loader.load("assets/models/ShotgunModel6.fbx", function (object) {
+  loader.load("assets/models/ShotgunModel7.fbx", function (object) {
 //     mixer = new THREE.AnimationMixer(object);
 // console.log("the obj is ", object)
 
