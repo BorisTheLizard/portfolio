@@ -12,12 +12,7 @@ init();
 animate();
 
 function init() {
-  console.log(
-    document.getElementsByClassName("slider--item slider--item-active")[0]
-      .offsetWidth,
-    document.getElementsByClassName("slider--item slider--item-active")[0]
-      .offsetHeight
-  );
+  console.log(document.getElementsByClassName("slider--item").length)
   const container = document.getElementsByClassName("slider--item-image")[1];
   camera = new THREE.PerspectiveCamera(
     40,
@@ -32,20 +27,21 @@ function init() {
 
   scene = new THREE.Scene();
   //scene.background = new THREE.Color( 0xa0a0a0 );
-  const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444);
+  const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444, 6);
   hemiLight.position.set(0, 200, 0);
-  //scene.add(hemiLight);
+  scene.add(hemiLight);
 
-  const dirLight = new THREE.DirectionalLight(0xffffff);
-  dirLight.position.set(0, 200, 100);
-  dirLight.castShadow = true;
+  const dirLight = new THREE.DirectionalLight(0xffffff,1);
+  dirLight.position.set(0, 2000, 1000);
+  dirLight.castShadow = false;
   dirLight.shadow.camera.top = 1080;
   dirLight.shadow.camera.bottom = -100;
   dirLight.shadow.camera.left = -120;
   dirLight.shadow.camera.right = 120;
-  //scene.add(dirLight);
+  scene.add(dirLight);
 
   //scene.add( new THREE.CameraHelper( dirLight.shadow.camera ) );
+
 
   // ground
   const mesh = new THREE.Mesh(
@@ -72,15 +68,17 @@ function init() {
   const loader = new FBXLoader();
   //Use second tukan model to see a diference "TukanNoBoomBox"
   loader.load("assets/models/tukanNoLightsNoBoomBox.fbx", function (object) {
-    mixer = new THREE.AnimationMixer(object);
+     mixer = new THREE.AnimationMixer(object);
 
-    const action = mixer.clipAction(object.animations[0]);
-    action.play();
+     const action = mixer.clipAction(object.animations[0]);
+     action.play();
 
+   
     object.traverse(function (child) {
       if (child.isMesh) {
         child.castShadow = true;
         child.receiveShadow = true;
+        child.material.shininess = 1.5
       }
     });
 
