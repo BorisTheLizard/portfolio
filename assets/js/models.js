@@ -34,16 +34,16 @@ function init() {
   //scene.background = new THREE.Color( 0xa0a0a0 );
   const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444);
   hemiLight.position.set(0, 200, 0);
-  //scene.add(hemiLight);
+  scene.add(hemiLight);
 
-  const dirLight = new THREE.DirectionalLight(0xffffff);
-  dirLight.position.set(0, 200, 100);
-  dirLight.castShadow = true;
+  const dirLight = new THREE.DirectionalLight(0xffffff,0.1);
+  dirLight.position.set(0, 2000, 1000);
+  dirLight.castShadow = false;
   dirLight.shadow.camera.top = 1080;
   dirLight.shadow.camera.bottom = -100;
   dirLight.shadow.camera.left = -120;
   dirLight.shadow.camera.right = 120;
-  //scene.add(dirLight);
+  scene.add(dirLight);
 
   //scene.add( new THREE.CameraHelper( dirLight.shadow.camera ) );
 
@@ -71,12 +71,15 @@ function init() {
   // model
   const loader = new FBXLoader();
   //Use second tukan model to see a diference "TukanNoBoomBox"
-  loader.load("assets/models/tukanNoLightsNoBoomBox.fbx", function (object) {
-    mixer = new THREE.AnimationMixer(object);
+  loader.load("assets/models/ShotgunModel6.fbx", function (object) {
+//     mixer = new THREE.AnimationMixer(object);
+// console.log("the obj is ", object)
 
-    const action = mixer.clipAction(object.animations[0]);
-    action.play();
-
+//     const action5 = mixer.clipAction(object.animations[5]);
+//     action5.play();
+//     const action6 = mixer.clipAction(object.animations[6]);
+//     action6.play();
+   
     object.traverse(function (child) {
       if (child.isMesh) {
         child.castShadow = true;
