@@ -133,26 +133,26 @@ const m2 = new Model({
   clock: new THREE.Clock(),
 });
 
-const m3 = new Model({
-  container: document.getElementsByClassName("slider--item-image")[2],
-  camera: new THREE.PerspectiveCamera(
-    40,
-    document.getElementsByClassName("slider--item slider--item-active")[0]
-      .offsetWidth /
-      document.getElementsByClassName("slider--item slider--item-active")[0]
-        .offsetHeight,
-    1,
-    4000
-  ),
-  scene: new THREE.Scene(),
-  renderer: new THREE.WebGLRenderer({ antialias: true, alpha: true }),
-  path: "assets/models/PandaExtensions.fbx",
-  hasAnimation: false,
-  clock: new THREE.Clock(),
-});
+// const m3 = new Model({
+//   container: document.getElementsByClassName("slider--item-image")[2],
+//   camera: new THREE.PerspectiveCamera(
+//     40,
+//     document.getElementsByClassName("slider--item slider--item-active")[0]
+//       .offsetWidth /
+//       document.getElementsByClassName("slider--item slider--item-active")[0]
+//         .offsetHeight,
+//     1,
+//     4000
+//   ),
+//   scene: new THREE.Scene(),
+//   renderer: new THREE.WebGLRenderer({ antialias: true, alpha: true }),
+//   path: "assets/models/PandaExtensions.fbx",
+//   hasAnimation: false,
+//   clock: new THREE.Clock(),
+// });
 
 const m4 = new Model({
-  container: document.getElementsByClassName("slider--item-image")[3],
+  container: document.getElementsByClassName("slider--item-image")[2],
   camera: new THREE.PerspectiveCamera(
     40,
     document.getElementsByClassName("slider--item slider--item-active")[0]
@@ -172,4 +172,4 @@ const m4 = new Model({
 m1.start();
 m2.start();
 m3.start();
-m4.start();
+// m4.start();
