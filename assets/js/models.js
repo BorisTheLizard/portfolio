@@ -11,6 +11,7 @@ class Model {
     clock,
     hasAnimation,
     path,
+    settings
   }) {
     this.container = container;
     this.camera = camera;
@@ -20,6 +21,7 @@ class Model {
     this.mixer = null;
     this.path = path;
     this.hasAnimation = hasAnimation;
+    this.settings=settings// an objects,
   }
   animate = () => {
     requestAnimationFrame(this.animate);
@@ -40,7 +42,7 @@ class Model {
     this.renderer.setSize(width, height);
   };
   init = () => {
-    this.camera.position.set(350, 350, 350);
+    this.camera.position.set(...this.settings.cameraPosition);
     const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444, 6);
     hemiLight.position.set(0, 200, 0);
     this.scene.add(hemiLight);
@@ -91,6 +93,7 @@ class Model {
     window.addEventListener("resize", this.onWindowResize);
   };
 
+
   start = () => {
     this.init();
     this.animate();
@@ -113,6 +116,9 @@ const m1 = new Model({
   path: "assets/models/tukanNoLightsNoBoomBox.fbx",
   hasAnimation: true,
   clock: new THREE.Clock(),
+  settings:{
+    cameraPosition:[350, 350, 350]
+  }
 });
 
 const m2 = new Model({
@@ -131,27 +137,13 @@ const m2 = new Model({
   path: "assets/models/ShotgunModel7.fbx",
   hasAnimation: false,
   clock: new THREE.Clock(),
+  settings:{
+    cameraPosition:[350, 350, 350]
+  }
 });
 
-// const m3 = new Model({
-//   container: document.getElementsByClassName("slider--item-image")[2],
-//   camera: new THREE.PerspectiveCamera(
-//     40,
-//     document.getElementsByClassName("slider--item slider--item-active")[0]
-//       .offsetWidth /
-//       document.getElementsByClassName("slider--item slider--item-active")[0]
-//         .offsetHeight,
-//     1,
-//     4000
-//   ),
-//   scene: new THREE.Scene(),
-//   renderer: new THREE.WebGLRenderer({ antialias: true, alpha: true }),
-//   path: "assets/models/PandaExtensions.fbx",
-//   hasAnimation: false,
-//   clock: new THREE.Clock(),
-// });
 
-const m4 = new Model({
+const m3 = new Model({
   container: document.getElementsByClassName("slider--item-image")[2],
   camera: new THREE.PerspectiveCamera(
     40,
@@ -167,9 +159,11 @@ const m4 = new Model({
   path: "assets/models/hellDude.fbx",
   hasAnimation: false,
   clock: new THREE.Clock(),
+  settings:{
+    cameraPosition:[550, 550, 550]
+  }
 });
 
 m1.start();
 m2.start();
 m3.start();
-// m4.start();
