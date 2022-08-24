@@ -2,27 +2,34 @@ import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.117.1/build/three.m
 import { OrbitControls } from "https://cdn.jsdelivr.net/npm/three@0.117.1/examples/jsm/controls/OrbitControls.js";
 import { FBXLoader } from "https://cdn.jsdelivr.net/npm/three@0.117.1/examples/jsm/loaders/FBXLoader.js";
 
-
 class Model {
-  constructor({container, camera, scene,renderer, clock,hasAnimation,path} ){
-    this.container=container;
-    this.camera=camera;
-    this.scene=scene;
-    this.renderer=renderer;
-    this.clock=clock;
-    this.mixer=null;
-    this.path=path;
-    this.hasAnimation=hasAnimation;
+  constructor({
+    container,
+    camera,
+    scene,
+    renderer,
+    clock,
+    hasAnimation,
+    path,
+  }) {
+    this.container = container;
+    this.camera = camera;
+    this.scene = scene;
+    this.renderer = renderer;
+    this.clock = clock;
+    this.mixer = null;
+    this.path = path;
+    this.hasAnimation = hasAnimation;
   }
-  animate=()=>{
+  animate = () => {
     requestAnimationFrame(this.animate);
     const delta = this.clock.getDelta();
     if (this.mixer) this.mixer.update(delta);
     this.renderer.render(this.scene, this.camera);
-  }
+  };
 
-  onWindowResize=()=>{
-      const width = document.getElementsByClassName(
+  onWindowResize = () => {
+    const width = document.getElementsByClassName(
       "slider--item slider--item-active"
     )[0].offsetWidth;
     const height = document.getElementsByClassName(
@@ -31,14 +38,14 @@ class Model {
     this.camera.aspect = width / height;
     this.camera.updateProjectionMatrix();
     this.renderer.setSize(width, height);
-    }
-  init=()=>{
+  };
+  init = () => {
     this.camera.position.set(350, 350, 350);
     const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444, 6);
     hemiLight.position.set(0, 200, 0);
     this.scene.add(hemiLight);
 
-    const dirLight = new THREE.DirectionalLight(0xffffff,1);
+    const dirLight = new THREE.DirectionalLight(0xffffff, 1);
     dirLight.position.set(0, 2000, 1000);
     dirLight.castShadow = false;
     dirLight.shadow.camera.top = 1080;
@@ -50,8 +57,8 @@ class Model {
     // model
     const loader = new FBXLoader();
     //Use second tukan model to see a diference "TukanNoBoomBox"
-    loader.load(this.path,  (object)=> {
-      if(this.hasAnimation){
+    loader.load(this.path, (object) => {
+      if (this.hasAnimation) {
         this.mixer = new THREE.AnimationMixer(object);
         const action = this.mixer.clipAction(object.animations[0]);
         action.play();
@@ -60,7 +67,7 @@ class Model {
         if (child.isMesh) {
           child.castShadow = true;
           child.receiveShadow = true;
-          child.material.shininess = 1.5
+          child.material.shininess = 1.5;
         }
       });
 
@@ -82,17 +89,17 @@ class Model {
     controls.update();
 
     window.addEventListener("resize", this.onWindowResize);
-  }
+  };
 
-  start=()=>{
+  start = () => {
     this.init();
     this.animate();
-  }
+  };
 }
 
 const m1 = new Model({
   container: document.getElementsByClassName("slider--item-image")[1],
-  camera:new THREE.PerspectiveCamera(
+  camera: new THREE.PerspectiveCamera(
     40,
     document.getElementsByClassName("slider--item slider--item-active")[0]
       .offsetWidth /
@@ -102,15 +109,15 @@ const m1 = new Model({
     4000
   ),
   scene: new THREE.Scene(),
-  renderer:new THREE.WebGLRenderer({ antialias: true, alpha: true }),
-  path:"assets/models/tukanNoLightsNoBoomBox.fbx",
-  hasAnimation:true,
-  clock:new THREE.Clock()
+  renderer: new THREE.WebGLRenderer({ antialias: true, alpha: true }),
+  path: "assets/models/tukanNoLightsNoBoomBox.fbx",
+  hasAnimation: true,
+  clock: new THREE.Clock(),
 });
 
 const m2 = new Model({
   container: document.getElementsByClassName("slider--item-image")[0],
-  camera:new THREE.PerspectiveCamera(
+  camera: new THREE.PerspectiveCamera(
     40,
     document.getElementsByClassName("slider--item slider--item-active")[0]
       .offsetWidth /
@@ -120,15 +127,15 @@ const m2 = new Model({
     4000
   ),
   scene: new THREE.Scene(),
-  renderer:new THREE.WebGLRenderer({ antialias: true, alpha: true }),
-  path:"assets/models/ShotgunModel7.fbx",
-  hasAnimation:false,
-  clock:new THREE.Clock()
+  renderer: new THREE.WebGLRenderer({ antialias: true, alpha: true }),
+  path: "assets/models/ShotgunModel7.fbx",
+  hasAnimation: false,
+  clock: new THREE.Clock(),
 });
 
 const m3 = new Model({
   container: document.getElementsByClassName("slider--item-image")[2],
-  camera:new THREE.PerspectiveCamera(
+  camera: new THREE.PerspectiveCamera(
     40,
     document.getElementsByClassName("slider--item slider--item-active")[0]
       .offsetWidth /
@@ -138,12 +145,31 @@ const m3 = new Model({
     4000
   ),
   scene: new THREE.Scene(),
-  renderer:new THREE.WebGLRenderer({ antialias: true, alpha: true }),
-  path:"assets/models/PandaExtensions.fbx",
-  hasAnimation:false,
-  clock:new THREE.Clock()
+  renderer: new THREE.WebGLRenderer({ antialias: true, alpha: true }),
+  path: "assets/models/PandaExtensions.fbx",
+  hasAnimation: false,
+  clock: new THREE.Clock(),
+});
+
+const m4 = new Model({
+  container: document.getElementsByClassName("slider--item-image")[3],
+  camera: new THREE.PerspectiveCamera(
+    40,
+    document.getElementsByClassName("slider--item slider--item-active")[0]
+      .offsetWidth /
+      document.getElementsByClassName("slider--item slider--item-active")[0]
+        .offsetHeight,
+    1,
+    4000
+  ),
+  scene: new THREE.Scene(),
+  renderer: new THREE.WebGLRenderer({ antialias: true, alpha: true }),
+  path: "assets/models/hellDude.fbx",
+  hasAnimation: false,
+  clock: new THREE.Clock(),
 });
 
 m1.start();
 m2.start();
 m3.start();
+m4.start();
