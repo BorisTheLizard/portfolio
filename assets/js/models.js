@@ -11,7 +11,7 @@ class Model {
     clock,
     hasAnimation,
     path,
-    settings
+    settings,
   }) {
     this.container = container;
     this.camera = camera;
@@ -21,7 +21,7 @@ class Model {
     this.mixer = null;
     this.path = path;
     this.hasAnimation = hasAnimation;
-    this.settings=settings// an objects,
+    this.settings = settings; // an objects,
   }
   animate = () => {
     requestAnimationFrame(this.animate);
@@ -93,7 +93,6 @@ class Model {
     window.addEventListener("resize", this.onWindowResize);
   };
 
-
   start = () => {
     this.init();
     this.animate();
@@ -116,9 +115,9 @@ const m1 = new Model({
   path: "assets/models/tukanNoLightsNoBoomBox.fbx",
   hasAnimation: true,
   clock: new THREE.Clock(),
-  settings:{
-    cameraPosition:[350, 350, 350]
-  }
+  settings: {
+    cameraPosition: [350, 350, 350],
+  },
 });
 
 const m2 = new Model({
@@ -137,11 +136,10 @@ const m2 = new Model({
   path: "assets/models/ShotgunModel7.fbx",
   hasAnimation: false,
   clock: new THREE.Clock(),
-  settings:{
-    cameraPosition:[350, 350, 350]
-  }
+  settings: {
+    cameraPosition: [350, 350, 350],
+  },
 });
-
 
 const m3 = new Model({
   container: document.getElementsByClassName("slider--item-image")[2],
@@ -156,12 +154,12 @@ const m3 = new Model({
   ),
   scene: new THREE.Scene(),
   renderer: new THREE.WebGLRenderer({ antialias: true, alpha: true }),
-  path: "assets/models/hellDude.fbx",
+  path: "assets/models/HellDude1.fbx",
   hasAnimation: false,
   clock: new THREE.Clock(),
-  settings:{
-    cameraPosition:[550, 550, 550]
-  }
+  settings: {
+    cameraPosition: [550, 550, 550],
+  },
 });
 
 m1.start();
