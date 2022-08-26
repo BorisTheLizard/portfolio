@@ -133,7 +133,7 @@ const m2 = new Model({
   ),
   scene: new THREE.Scene(),
   renderer: new THREE.WebGLRenderer({ antialias: true, alpha: true }),
-  path: "assets/models/ShotgunModel7.fbx",
+  path: "assets/models/ShotgunModel8.fbx",
   hasAnimation: false,
   clock: new THREE.Clock(),
   settings: {
@@ -154,7 +154,7 @@ const m3 = new Model({
   ),
   scene: new THREE.Scene(),
   renderer: new THREE.WebGLRenderer({ antialias: true, alpha: true }),
-  path: "assets/models/HellDude1.fbx",
+  path: "assets/models/HellDude.fbx",
   hasAnimation: false,
   clock: new THREE.Clock(),
   settings: {
