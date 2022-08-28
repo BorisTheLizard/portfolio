@@ -28,10 +28,6 @@
   font-size: 3rem;
 }
 
-.work--lockup .slider--item-hidden {
-  display: none;
-}
-
 canvas {
   outline: none;
 }
@@ -225,4 +221,10 @@ canvas {
     font-size: 2rem;
     margin-bottom: 0;
   }
+}
+.active {
+  display: block !important;
+}
+.hidden {
+  display: none !important;
 }
