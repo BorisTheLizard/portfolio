@@ -2,26 +2,22 @@ import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.117.1/build/three.m
 import { OrbitControls } from "https://cdn.jsdelivr.net/npm/three@0.117.1/examples/jsm/controls/OrbitControls.js";
 import { FBXLoader } from "https://cdn.jsdelivr.net/npm/three@0.117.1/examples/jsm/loaders/FBXLoader.js";
 
-class Model {
-  constructor({
-    container,
-    camera,
-    scene,
-    renderer,
-    clock,
-    hasAnimation,
-    path,
-    settings,
-  }) {
-    this.container = container;
-    this.camera = camera;
-    this.scene = scene;
-    this.renderer = renderer;
-    this.clock = clock;
+export default class Model {
+  constructor({ config }) {
+    this.container =
+      document.getElementsByClassName("slider--item-image")[config.index];
+    this.camera = new THREE.PerspectiveCamera(
+      40,
+      document.getElementsByClassName("slider--item active")[0].offsetWidth /
+        document.getElementsByClassName("slider--item active")[0].offsetHeight,
+      1,
+      4000
+    );
+    this.scene = new THREE.Scene();
+    this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    this.clock = new THREE.Clock();
     this.mixer = null;
-    this.path = path;
-    this.hasAnimation = hasAnimation;
-    this.settings = settings; // an objects,
+    this.config = config; // an objects,
   }
   animate = () => {
     requestAnimationFrame(this.animate);
@@ -31,18 +27,16 @@ class Model {
   };
 
   onWindowResize = () => {
-    const width = document.getElementsByClassName(
-      "slider--item slider--item-active"
-    )[0].offsetWidth;
-    const height = document.getElementsByClassName(
-      "slider--item slider--item-active"
-    )[0].offsetHeight;
+    const width = document.getElementsByClassName("slider--item active")[0]
+      .offsetWidth;
+    const height = document.getElementsByClassName("slider--item active")[0]
+      .offsetHeight;
     this.camera.aspect = width / height;
     this.camera.updateProjectionMatrix();
     this.renderer.setSize(width, height);
   };
   init = () => {
-    this.camera.position.set(...this.settings.cameraPosition);
+    this.camera.position.set(...this.config.cameraPosition);
     const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444, 6);
     hemiLight.position.set(0, 200, 0);
     this.scene.add(hemiLight);
@@ -59,8 +53,8 @@ class Model {
     // model
     const loader = new FBXLoader();
     //Use second tukan model to see a diference "TukanNoBoomBox"
-    loader.load(this.path, (object) => {
-      if (this.hasAnimation) {
+    loader.load(this.config.path, (object) => {
+      if (this.config.hasAnimation) {
         this.mixer = new THREE.AnimationMixer(object);
         const action = this.mixer.clipAction(object.animations[0]);
         action.play();
@@ -78,14 +72,15 @@ class Model {
 
     this.renderer.setClearColor(0x000000, 0);
     this.renderer.setPixelRatio(window.devicePixelRatio);
-    const width = document.getElementsByClassName(
-      "slider--item slider--item-active"
-    )[0].offsetWidth;
-    const height = document.getElementsByClassName(
-      "slider--item slider--item-active"
-    )[0].offsetHeight;
+    const width = document.getElementsByClassName("slider--item active")[0]
+      .offsetWidth;
+    const height = document.getElementsByClassName("slider--item active")[0]
+      .offsetHeight;
     this.renderer.setSize(width, height);
     this.container.appendChild(this.renderer.domElement);
+    document.getElementsByClassName("slider--item-title")[
+      this.config.index
+    ].innerText = this.config.name;
     const controls = new OrbitControls(this.camera, this.renderer.domElement);
     controls.target.set(0, 100, 0);
     controls.update();
@@ -100,68 +95,32 @@ class Model {
 }
 
 const m1 = new Model({
-  container: document.getElementsByClassName("slider--item-image")[1],
-  camera: new THREE.PerspectiveCamera(
-    40,
-    document.getElementsByClassName("slider--item slider--item-active")[0]
-      .offsetWidth /
-      document.getElementsByClassName("slider--item slider--item-active")[0]
-        .offsetHeight,
-    1,
-    4000
-  ),
-  scene: new THREE.Scene(),
-  renderer: new THREE.WebGLRenderer({ antialias: true, alpha: true }),
-  path: "assets/models/tukanNoLightsNoBoomBox.fbx",
-  hasAnimation: true,
-  clock: new THREE.Clock(),
-  settings: {
+  config: {
     cameraPosition: [350, 350, 350],
+    path: "assets/models/tukanNoLightsNoBoomBox.fbx",
+    name: "Tukan Model",
+    hasAnimation: true,
+    index: 0,
   },
 });
 
 const m2 = new Model({
-  container: document.getElementsByClassName("slider--item-image")[0],
-  camera: new THREE.PerspectiveCamera(
-    40,
-    document.getElementsByClassName("slider--item slider--item-active")[0]
-      .offsetWidth /
-      document.getElementsByClassName("slider--item slider--item-active")[0]
-        .offsetHeight,
-    1,
-    4000
-  ),
-  scene: new THREE.Scene(),
-  renderer: new THREE.WebGLRenderer({ antialias: true, alpha: true }),
-  path: "assets/models/ShotgunModel8.fbx",
-  hasAnimation: false,
-  clock: new THREE.Clock(),
-  settings: {
+  config: {
     cameraPosition: [350, 350, 350],
+    path: "assets/models/ShotgunModel8.fbx",
+    name: "Shotgun Model",
+    hasAnimation: false,
+    index: 1,
   },
 });
 
 const m3 = new Model({
-  container: document.getElementsByClassName("slider--item-image")[2],
-  camera: new THREE.PerspectiveCamera(
-    40,
-    document.getElementsByClassName("slider--item slider--item-active")[0]
-      .offsetWidth /
-      document.getElementsByClassName("slider--item slider--item-active")[0]
-        .offsetHeight,
-    1,
-    4000
-  ),
-  scene: new THREE.Scene(),
-  renderer: new THREE.WebGLRenderer({ antialias: true, alpha: true }),
-  path: "assets/models/HellDude.fbx",
-  hasAnimation: false,
-  clock: new THREE.Clock(),
-  settings: {
+  config: {
+    path: "assets/models/HellDude1.fbx",
+    name: "Monster Model",
+    hasAnimation: false,
     cameraPosition: [550, 550, 550],
+    index: 2,
   },
 });
-
-m1.start();
-m2.start();
-m3.start();
+export { m1, m2, m3 };
