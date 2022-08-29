@@ -255,7 +255,7 @@ $( document ).ready(function() {
 
   function transitionLabels() {
 
-    $('.work-request--information input').focusout(function(){
+    $('.work-request--information input, .work-request--information textarea').focusout(function(){
 
       var textVal = $(this).val();
 
