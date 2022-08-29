@@ -632,6 +632,16 @@ body {
   line-height: 1;
   z-index: 1;
 }
+
+.intro--banner p {
+  position: relative;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1;
+  z-index: 1;
+  margin-bottom: 2rem;
+  color: rgba(255, 255, 255, 0.54);
+}
 .intro--banner a {
   position: relative;
   padding: 5px 17px 5px 12px;
@@ -732,10 +742,26 @@ body {
     width: 100%;
   }
 }
+
 .work h2 {
-  margin: 0 0 20px 0;
-  font-size: 30px;
-  text-align: center;
+  position: relative;
+  margin-top: 0;
+  font-size: 3rem;
+  font-weight: 900;
+  line-height: 1;
+  z-index: 1;
+  margin-bottom: 1rem;
+}
+
+.work h4 {
+  position: relative;
+  margin-top: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1;
+  z-index: 1;
+  margin-bottom: 2rem;
+  color: rgba(255, 255, 255, 0.54);
 }
 .work--lockup {
   position: relative;
@@ -976,9 +1002,6 @@ body {
   }
 }
 @media (max-width: 767px) {
-  .about--banner {
-    height: 305px;
-  }
   .about--banner::before {
     top: 0;
     left: 125px;
@@ -1075,8 +1098,15 @@ body {
 
 .hire h3 {
   margin: 0;
-  font-size: 22px;
   text-align: center;
+  position: relative;
+  margin-top: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1;
+  z-index: 1;
+  margin-bottom: 2rem;
+  color: rgba(255, 255, 255, 0.54);
 }
 .work-request {
   display: -webkit-box;
