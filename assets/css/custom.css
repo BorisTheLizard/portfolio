@@ -354,3 +354,7 @@ canvas {
     transform: scale(0.8);
   }
 }
+
+.coming-soon-project {
+  filter: grayscale(1);
+}
