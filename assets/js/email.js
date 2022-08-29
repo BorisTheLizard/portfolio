@@ -6,12 +6,13 @@ window.onload = function () {
     document.getElementById("result-message").innerText =
       "Your message has been sent successfully!";
   }
-  function showErrorModal() {
+  function showErrorModal(mssg) {
     document.getElementById("myModal").style.display = "flex";
     document.getElementById("modal-background").className =
       "modal-content-error";
-    document.getElementById("result-message").innerText =
-      "Failed to send your message, please try again";
+    document.getElementById("result-message").innerText = mssg
+      ? mssg
+      : "Failed to send your message, please try again";
   }
   document
     .getElementById("contact-form")
@@ -22,6 +23,14 @@ window.onload = function () {
         email: this.email.value,
         message: this.message.value,
       };
+      if (
+        !template_params.email.trim() ||
+        !template_params.name.trim() ||
+        !template_params.message.trim()
+      ) {
+        showErrorModal("All the fields are required");
+        return;
+      }
       // YOUR EMAIL.JS API KEY IN FORMAT user_xxxxxxxxxxxxxxxxxx
       let API_KEY = "GgjT-7LhtIHk5Zx9U";
       // YOUR EMAIL.JS SERVICE ID
