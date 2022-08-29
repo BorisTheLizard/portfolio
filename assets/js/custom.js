@@ -73,7 +73,6 @@ $(document).ready(function () {
       const sliderItems = document.getElementsByClassName("slider--item");
       const sliderItemsArray = Array.from(sliderItems);
       sliderItemsArray.forEach((item) => {
-        console.log("item ", item);
         item.className = "slider--item hidden";
       });
       sliderItemsArray[activeModelIndex].className = "slider--item active";
