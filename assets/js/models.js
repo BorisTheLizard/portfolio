@@ -116,9 +116,9 @@ const m2 = new Model({
 
 const m3 = new Model({
   config: {
-    path: "assets/models/HellDude1.fbx",
-    name: "Monster Model",
-    hasAnimation: false,
+    path: "assets/models/eyePlantRigged.fbx",
+    name: "Eye Plant",
+    hasAnimation: true,
     cameraPosition: [550, 550, 550],
     index: 2,
   },
