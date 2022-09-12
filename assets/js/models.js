@@ -97,7 +97,7 @@ export default class Model {
 const m1 = new Model({
   config: {
     cameraPosition: [350, 350, 350],
-    path: "assets/models/tukanNoLightsNoBoomBox.fbx",
+    path: "assets/models/tukanPortfolio.fbx",
     name: "Tukan Model",
     hasAnimation: true,
     index: 0,
