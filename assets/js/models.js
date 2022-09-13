@@ -56,8 +56,15 @@ export default class Model {
     loader.load(this.config.path, (object) => {
       if (this.config.hasAnimation) {
         this.mixer = new THREE.AnimationMixer(object);
-        const action = this.mixer.clipAction(object.animations[0]);
-        action.play();
+        if (this.config.name === "Tukan Model") {
+          const action1 = this.mixer.clipAction(object.animations[1]);
+          action1.play();
+          const action2 = this.mixer.clipAction(object.animations[2]);
+          action2.play();
+        } else {
+          const action = this.mixer.clipAction(object.animations[0]);
+          action.play();
+        }
       }
       object.traverse(function (child) {
         if (child.isMesh) {
@@ -97,7 +104,7 @@ export default class Model {
 const m1 = new Model({
   config: {
     cameraPosition: [350, 350, 350],
-    path: "assets/models/tukanPortfolio.fbx",
+    path: "assets/models/TukanPortfolio.fbx",
     name: "Tukan Model",
     hasAnimation: true,
     index: 0,
