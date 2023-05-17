@@ -949,10 +949,12 @@ body {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   align-items: center;
+  justify-content: center;
   margin: 0;
   padding: 0;
   list-style: none;
   gap: 20px;
+  width: 100%;
 }
 .about--options > a {
   position: relative;
@@ -985,6 +987,27 @@ body {
   text-transform: uppercase;
   -webkit-transition: bottom 0.2s ease-in-out, left 0.2s ease-in-out;
   transition: bottom 0.2s ease-in-out, left 0.2s ease-in-out;
+}
+#game-header {
+  background-image: url("../img/harvester.jpg");
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  max-width: 75%;
+  height: calc(100% - 75px);
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  margin: 0 auto;
+  justify-content: center;
 }
 
 @media (max-width: 900px) {
