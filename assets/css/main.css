@@ -954,8 +954,9 @@ body {
   margin: 0;
   padding: 0;
   list-style: none;
-  gap: 20px;
+  gap: 30px;
   width: 100%;
+  padding: 20px;
 }
 .about--options > a {
   position: relative;
@@ -963,29 +964,30 @@ body {
   height: 200px;
   text-decoration: none;
   color: #fff;
-  border: 10px solid #783901;
+  border: 2px solid #783901;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 }
 .about--options > a:nth-child(1) {
-  background-image: url("../img/blzBash.jpg");
+  background-image: url("../img/dinglbry.jpg");
 }
 .about--options > a:nth-child(2) {
-  background-image: url("../img/aiAttcs.jpg");
+  background-image: url("../img/sunny.jpg");
 }
 .about--options > a:nth-child(3) {
-  background-image: url("../img/ddLogo.png");
+  background-image: url("../img/aiAttcs.jpg");
 }
 .about--options > a:nth-child(4) {
-  background-image: url("../img/dc.jpg");
+  background-image: url("../img/blzBash.jpg");
 }
 .about--options > a:nth-child(5) {
-  background-image: url("../img/crocchy.png");
+  background-image: url("../img/dc.jpg");
 }
 .about--options > a:nth-child(6) {
-  background-image: url("../img/lockImg.png");
+  background-image: url("../img/crocchy.png");
 }
+
 .about--options > a:hover h3 {
   bottom: -50px;
 }
@@ -1003,7 +1005,18 @@ body {
   width: 100%;
 }
 #game-header {
-  background-image: url("../img/aiattacksbanner.png");
+  background-image: url("../img/sunnysideShotoutBanner.png");
+  width: 100%;
+  height: 400px; /* set a fixed height */
+  background-size: cover;       /* scale to cover horizontally */
+  background-position: center;  /* center the image */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+/* #game-header {
+  background-image: url("../img/sunnysideShotoutBanner.png");
   width: 100%;
   height: 100%;
   position: relative;
@@ -1022,7 +1035,7 @@ body {
   -ms-flex-pack: center;
   margin: 0 auto;
   justify-content: center;
-}
+} */
 
 @media (max-width: 900px) {
   .intro--banner h1 {
@@ -1047,57 +1060,55 @@ body {
     width: 100%;
   }
 }
+
+
+.about--banner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  height: auto;
+}
+
+.about--banner h2,
+.about--banner h4 {
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+
+.about--banner::before,
+.about--banner::after {
+  position: absolute;
+  content: '';
+  pointer-events: none;
+}
+
+/* mobile adjustments */
 @media (max-width: 767px) {
-  .about--banner::before {
-    top: 0;
-    left: 125px;
-  }
-  .about--banner::after {
-    top: 35px;
-    left: 260px;
+  .about--banner {
+    text-align: center;
   }
   .about--banner h2 {
-    margin-top: 0;
     font-size: 2rem;
   }
-  .about--banner h2::before {
-    top: 28px;
-    left: 168px;
-  }
-  .about--banner h2::after {
-    top: 163px;
-    left: 163px;
-  }
-  .about--banner img {
-    width: 315px;
+  .about--banner h4 {
+    font-size: 1.2rem;
   }
 }
+
 @media (max-width: 600px) {
   .about--banner {
-    height: auto;
-  }
-  .about--banner::before {
-    left: 155px;
-  }
-  .about--banner::after {
-    left: 310px;
-  }
-  .about--banner h2 {
-    margin-top: 0;
-    font-size: 2rem;
-  }
-  .about--banner h2::before {
-    top: 43px;
-    left: 214px;
-  }
-  .about--banner h2::after {
-    top: 205px;
-    left: 205px;
+    text-align: center;
   }
   .about--banner img {
     display: none;
   }
 }
+
+
 .contact {
   position: fixed;
   top: 0;
